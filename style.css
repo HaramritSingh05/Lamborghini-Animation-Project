@@ -1,0 +1,125 @@
+/* 
+        * is used to apply a change to every element on the page 
+*/
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  /* This line is used to hide something comment this out and see what it is else see code with harry's video at 28:45 */
+  overflow: hidden;
+  animation: shakebody linear 6s infinite;
+}
+.sky {
+  height: 100vh;
+  width: 100%;
+  /* Height and width of the image */
+  background-image: url(background.jpg);
+  background-repeat: no-repeat;
+  /* So that when we zoom out we dont see any background repeat */
+  position: absolute;
+  /* An element with position: absolute; will cause it to adjust its position with respect to its parent.
+    If no parent is present, then it uses the document body as parent */
+}
+
+.trees {
+  height: 100vh; /* See the image and then see the height */
+  width: 100%;
+  background-image: url(trees.png);
+  background-size: cover;
+  /* 	Resize the background image to cover the entire container,
+even if it has to stretch the image or cut a little bit off one of the edges */
+  position: absolute;
+  top: -144px;
+  /* To make the trees appear above the tracks we set the value of top */
+  /* By setting the height we couldn't achieve what we wanted maybe due to position absolute  */
+}
+.track {
+  height: 60vh;
+  width: 800vw;
+  /*  When we apply the animation to move the tracks then we have to increase the width else
+    for some time the track vanishes before it again comes from the right side */
+  background-image: url(track.png);
+  background-repeat: repeat-x;
+  position: absolute;
+  top: 70vh;
+  animation: carMove linear 13s infinite;
+}
+
+.car {
+  height: 100px;
+  width: 380px;
+  /* Dimensions of car */
+  background-image: url(car_body.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 444px;
+  bottom: 30vh;
+  /* TO set the position of car */
+  animation: shake linear 0.3s infinite;
+}
+
+/* By inspection we have set the positions of the 2 wheels */
+
+.wheel1 img {
+  /*
+    Setting the top, right, bottom, and left properties of a relatively-positioned element
+    will cause it to be adjusted away from its normal position.
+    Other content will not be adjusted to fit into any gap left by the element.
+*/
+  width: 77px;
+  position: relative;
+  top: 42px;
+  left: 42px;
+  animation: wheelRotation linear 0.16s infinite;
+}
+
+.wheel2 img {
+  width: 77px;
+  position: relative;
+  top: -39px;
+  left: 235px;
+  animation: wheelRotation linear 0.16s infinite;
+}
+
+/* This animation is used to rotate the wheel */
+@keyframes wheelRotation {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* This animation is used to move the tracks in the backward direction */
+@keyframes carMove {
+  100% {
+    transform: translateX(-500vw);
+  }
+}
+
+/* This is used to shake the car to make it look like that it is moving */
+@keyframes shake {
+  0% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+
+/* This animation is used to shake the whole page or body */
+@keyframes shakebody {
+  0% {
+    transform: translateY(-50px);
+  }
+  50% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(-50px);
+  }
+}
